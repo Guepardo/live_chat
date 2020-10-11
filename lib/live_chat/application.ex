@@ -5,15 +5,19 @@ defmodule LiveChat.Application do
 
   use Application
 
+  alias LiveChat.Messaging.Source.{Ingest, Consumer}
+
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       LiveChat.Repo,
       # Start the endpoint when the application starts
-      LiveChatWeb.Endpoint
+      LiveChatWeb.Endpoint,
       # Starts a worker by calling: LiveChat.Worker.start_link(arg)
       # {LiveChat.Worker, arg},
+      {Ingest, []},
+      {Consumer, :ok}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

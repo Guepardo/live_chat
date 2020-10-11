@@ -13,9 +13,21 @@
 alias LiveChat.Messaging
 alias LiveChat.Room
 
-{:ok, chat} =
-  Room.create_chat(%{name: "alsdkjfalsdfj", transmission_id: "asdfasdf"})
+{:ok, chat} = Room.create_chat(%{name: "alsdkjfalsdfj", transmission_id: "asdfasdf"})
 
-for nada <- 1..1_000 do
-  Messaging.create_message_batch(%{chat_id: chat.id})
-end
+# messages =
+#   1..1_000
+#   |> Enum.map(fn item ->
+#     %{
+#       chat_id: chat.id,
+#       palyoad: Integer.to_string(item),
+#       inserted_at: NaiveDateTime.utc_now |> NaiveDateTime.truncate(:second),
+#       updated_at: NaiveDateTime.utc_now |> NaiveDateTime.truncate(:second)
+#     }
+#   end)
+
+# Messaging.create_many_messages(messages)
+
+# for nada <- 1..1_000 do
+#   Messaging.create_message_batch(%{chat_id: chat.id})
+# end

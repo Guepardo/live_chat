@@ -151,6 +151,10 @@ defmodule LiveChat.Messaging do
     |> Repo.insert()
   end
 
+
+  def create_many_messages(attrs \\ []) do
+    Repo.insert_all(Message, attrs)
+  end
   @doc """
   Updates a message.
 

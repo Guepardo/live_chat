@@ -5,10 +5,11 @@ defmodule LiveChat.Repo.Migrations.CreateMessages do
     create table(:messages) do
       add :palyoad, :string
       add :message_batch_id, references(:message_batches, on_delete: :nothing)
+      add :chat_id, references(:chats, on_delete: :nothing)
 
       timestamps()
     end
 
-    create index(:messages, [:message_batch_id])
+    create index(:messages, [:message_batch_id, :chat_id])
   end
 end
