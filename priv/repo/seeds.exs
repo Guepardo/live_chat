@@ -13,7 +13,15 @@
 alias LiveChat.Messaging
 alias LiveChat.Room
 
-{:ok, chat} = Room.create_chat(%{name: "alsdkjfalsdfj", transmission_id: "asdfasdf"})
+for x <- 0..50 do
+  {:ok, chat} = Room.create_chat(%{name: "alsdkjfalsdfj#{x}", transmission_id: "asdfasdf#{x}"})
+
+  Messaging.create_message_batch(%{
+    chat_id: chat.id,
+    uuid: :crypto.strong_rand_bytes(128) |> Base.url_encode64(),
+    next_message_batch_uuid: :crypto.strong_rand_bytes(128) |> Base.url_encode64()
+  })
+end
 
 # messages =
 #   1..1_000

@@ -5,7 +5,7 @@ defmodule LiveChat.Application do
 
   use Application
 
-  alias LiveChat.Messaging.Source.{Ingest, Consumer}
+  alias LiveChat.Messaging.Source.{Ingest, Consumer, MessagesBatchScheduler}
 
   def start(_type, _args) do
     # List all child processes to be supervised
@@ -17,7 +17,8 @@ defmodule LiveChat.Application do
       # Starts a worker by calling: LiveChat.Worker.start_link(arg)
       # {LiveChat.Worker, arg},
       {Ingest, []},
-      {Consumer, :ok}
+      {Consumer, :ok},
+      {MessagesBatchScheduler, :ok}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

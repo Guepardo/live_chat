@@ -16,8 +16,8 @@ defmodule LiveChat.Messaging.MessageBatch do
   def changeset(message_batch, attrs) do
     message_batch
     |> cast(attrs, [:uuid, :next_message_batch_uuid, :chat_id])
-    |> put_change(:uuid, :crypto.strong_rand_bytes(128) |> Base.url_encode64())
-    |> validate_required([:uuid, :chat_id])
-    |> unique_constraint(:uuid)
+    # |> put_change(:uuid, :crypto.strong_rand_bytes(128) |> Base.url_encode64())
+    # |> put_change(:next_message_batch_uuid, :crypto.strong_rand_bytes(128) |> Base.url_encode64())
+    |> validate_required([:chat_id])
   end
 end
