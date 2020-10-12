@@ -29,6 +29,6 @@ defmodule LiveChat.Messaging.Source.MessagesBatchCreator do
   end
 
   defp bind_messages_to_batch(messages_batch) do
-    Messaging.bind_messages_to_batch(messages_batch.id)
+    Messaging.bind_messages_to_batch(messages_batch.id, messages_batch.chat_id)
   end
 end

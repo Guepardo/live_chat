@@ -3,7 +3,7 @@ defmodule LiveChat.Repo.Migrations.CreateMessages do
 
   def change do
     create table(:messages) do
-      add :palyoad, :string
+      add :payload, :string
       add :message_batch_id, references(:message_batches, on_delete: :nothing)
       add :chat_id, references(:chats, on_delete: :nothing)
 

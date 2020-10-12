@@ -10,6 +10,7 @@ defmodule LiveChatWeb.Router do
   end
 
   pipeline :api do
+    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
   end
 
@@ -19,11 +20,14 @@ defmodule LiveChatWeb.Router do
     get "/", PageController, :index
   end
 
-  scope "/client_api/", LiveChatWeb.ClientApi do
-    scope "/chat" do
-      get "/:chat_id/message", MessageController, :index
+  scope "/api/", LiveChatWeb.ClientApi do
+    pipe_through :api
+
+    resources "/chats", ChatController, only: [:show] do
+      resources("/messages", MessageController, only: [:show])
     end
   end
+
   # Other scopes may use custom stacks.
   # scope "/api", LiveChatWeb do
   #   pipe_through :api

@@ -7,6 +7,7 @@ defmodule LiveChat.Messaging.Source.MessagesRecorder do
 
       messages =
         :queue.to_list(batch_messages)
+        |> Enum.reverse()
         |> Enum.map(fn message ->
           message
           |> Map.put(:inserted_at, current_date)

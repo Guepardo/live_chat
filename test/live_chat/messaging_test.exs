@@ -126,9 +126,9 @@ defmodule LiveChat.MessagingTest do
   describe "messages" do
     alias LiveChat.Messaging.Message
 
-    @valid_attrs %{palyoad: "some palyoad"}
-    @update_attrs %{palyoad: "some updated palyoad"}
-    @invalid_attrs %{palyoad: nil}
+    @valid_attrs %{payload: "some payload"}
+    @update_attrs %{payload: "some updated payload"}
+    @invalid_attrs %{payload: nil}
 
     def message_fixture(attrs \\ %{}) do
       {:ok, message} =
@@ -151,7 +151,7 @@ defmodule LiveChat.MessagingTest do
 
     test "create_message/1 with valid data creates a message" do
       assert {:ok, %Message{} = message} = Messaging.create_message(@valid_attrs)
-      assert message.palyoad == "some palyoad"
+      assert message.payload == "some payload"
     end
 
     test "create_message/1 with invalid data returns error changeset" do
@@ -161,7 +161,7 @@ defmodule LiveChat.MessagingTest do
     test "update_message/2 with valid data updates the message" do
       message = message_fixture()
       assert {:ok, %Message{} = message} = Messaging.update_message(message, @update_attrs)
-      assert message.palyoad == "some updated palyoad"
+      assert message.payload == "some updated payload"
     end
 
     test "update_message/2 with invalid data returns error changeset" do

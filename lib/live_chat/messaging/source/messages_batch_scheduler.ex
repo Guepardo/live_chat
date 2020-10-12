@@ -4,7 +4,7 @@ defmodule LiveChat.Messaging.Source.MessagesBatchScheduler do
   alias LiveChat.Room
   alias LiveChat.Messaging.Source.MessagesBatchCreator
 
-  @ticker_in_seconds 4500
+  @ticker_in_seconds 4950
 
   def start_link(_args) do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)

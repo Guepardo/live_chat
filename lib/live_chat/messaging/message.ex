@@ -6,7 +6,7 @@ defmodule LiveChat.Messaging.Message do
   alias LiveChat.Messaging.MessageBatch
 
   schema "messages" do
-    field :palyoad, :string
+    field :payload, :string
     belongs_to :chat, Chat
     belongs_to :message_batch, MessageBatch
 
@@ -16,7 +16,7 @@ defmodule LiveChat.Messaging.Message do
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:palyoad, :chat_id, :message_batch_id])
-    |> validate_required([:palyoad, :chat_id])
+    |> cast(attrs, [:payload, :chat_id, :message_batch_id])
+    |> validate_required([:payload, :chat_id])
   end
 end

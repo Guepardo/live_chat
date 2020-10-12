@@ -12,7 +12,10 @@ defmodule LiveChat.Messaging do
     Repo.all(MessageBatch)
   end
 
-  def get_message_batch!(id), do: Repo.get!(MessageBatch, id)
+  def get_message_batch(uuid) do
+    MessageBatch
+    |> Repo.get_by(uuid: uuid)
+  end
 
   @spec get_latest_messages_batch_from_chat(any) :: any
   def get_latest_messages_batch_from_chat(id) do
@@ -67,8 +70,8 @@ defmodule LiveChat.Messaging do
     |> Repo.update()
   end
 
-  def bind_messages_to_batch(message_batch_id) do
-    from(m in Message, where: is_nil(m.message_batch_id))
+  def bind_messages_to_batch(message_batch_id, chat_id) do
+    from(m in Message, where: is_nil(m.message_batch_id) and m.chat_id == ^chat_id)
     |> Repo.update_all(set: [message_batch_id: message_batch_id])
   end
 

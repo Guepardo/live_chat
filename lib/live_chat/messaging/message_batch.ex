@@ -3,11 +3,13 @@ defmodule LiveChat.Messaging.MessageBatch do
   import Ecto.Changeset
 
   alias LiveChat.Room.Chat
+  alias LiveChat.Messaging.Message
 
   schema "message_batches" do
     field :uuid, :string
     field :next_message_batch_uuid, :string
     belongs_to :chat, Chat
+    has_many :messages, Message
 
     timestamps()
   end
