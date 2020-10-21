@@ -18,7 +18,8 @@ defmodule LiveChat.Application do
       # {LiveChat.Worker, arg},
       {Ingest, []},
       {Consumer, :ok},
-      {MessagesBatchScheduler, :ok}
+      # {MessagesBatchScheduler, :ok},
+      {Cachex, name: :cache}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

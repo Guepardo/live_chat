@@ -45,7 +45,8 @@ defmodule LiveChat.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:gen_stage, "~> 1.0.0"},
       {:timex, "~> 3.5"},
-      {:cors_plug, "~> 1.5"}
+      {:cors_plug, "~> 1.5"},
+      {:cachex, "~> 3.3"}
     ]
   end
 

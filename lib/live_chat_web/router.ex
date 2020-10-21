@@ -28,6 +28,12 @@ defmodule LiveChatWeb.Router do
     end
   end
 
+  scope "/adm_api/", LiveChatWeb.ManagerApi do
+    scope "/user" do
+      get "/:uuid/grant", UserController, :grant
+    end
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", LiveChatWeb do
   #   pipe_through :api
