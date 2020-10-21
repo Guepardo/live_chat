@@ -12,6 +12,12 @@
 
 alias LiveChat.Messaging
 alias LiveChat.Room
+alias LiveChat.Accounts
+
+Accounts.create_app(%{
+  name: "netshow.me",
+  token: :crypto.strong_rand_bytes(128) |> Base.url_encode64()
+})
 
 for x <- 0..1 do
   {:ok, chat} = Room.create_chat(%{name: "alsdkjfalsdfj#{x}", transmission_id: "asdfasdf#{x}"})
